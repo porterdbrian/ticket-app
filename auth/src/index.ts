@@ -25,7 +25,7 @@ app.all('*', async (req, res) => {
 
 app.use(errorHandler);
 
-const startDb = async () => {
+const startAuthSrv = async () => {
     try {
         await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
             useNewUrlParser: true,
@@ -43,4 +43,4 @@ const startDb = async () => {
     });
 }
 
-startDb();
+startAuthSrv();
