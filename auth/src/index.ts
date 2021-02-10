@@ -4,7 +4,7 @@ import { json } from 'body-parser';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 
-import { currentUserRouter } from './routes/currentuser';
+import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signupRouter } from './routes/signup';
 import { signoutRouter } from './routes/signout';
@@ -44,7 +44,7 @@ const startAuthSrv = async () => {
             useCreateIndex: true
         });
 
-        console.log('CONNECTED TO MONGODB')
+        console.log('MongoDB is connected')
     } catch (error) {
         console.error(error);
     }
