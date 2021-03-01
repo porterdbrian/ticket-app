@@ -1,19 +1,28 @@
 import { useState } from  'react';
 import axios from 'axios';
+import useRequest from '../../hooks/use-request';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {doRequest, errors} = useRequest({
+        url: '/api/users/signup',
+        method: 'post',
+        bodt: {
+            email, password
+        }
+    });
     
     const onSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post('/api/users/signup', { email, password});
-        console.log(response.data);
+
+        doRequest();
     }
 
     return (
         <form onSubmit={onSubmit}>
             <h1>Sign Up</h1>
+            { errors }
             <div className="form-group">
                 <label>Email Address</label>
                 <input 
